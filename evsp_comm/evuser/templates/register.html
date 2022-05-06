@@ -1,0 +1,52 @@
+{% extends "base.html" %} 
+
+{% block contents %}  
+<div class="row mt-5">
+  <div class="col-12 text-center">
+    <h1>회원가입</h1>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    {{ error }}
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <form method="POST" action=".">
+      <!-- django에서 폼에서 서버로 데이터를 전송할 때 보안을 위해서 꼭 넣어줘야 하는 기능  -->
+      <!-- 비즈니스 로직을 작성하고 POST를 통해 데이터 전달을 위해서는 name="" 이 꼭 있어야 해서 추가. -->
+      {% csrf_token %} 
+      <div class="mb-3">
+        <label for="username" class="form-label">사용자 이름</label>
+        <input type="text" class="form-control" id="username" placeholder="사용자 이름" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">비밀번호</label>
+        <input type="password" class="form-control" id="password" placeholder="비밀번호" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="re-password" class="form-label">비밀번호 확인</label>
+        <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인" name="re-password">
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">회원 이름</label>
+        <input type="text" class="form-control" id="name" placeholder="회원 이름" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">이메일</label>
+        <input type="email" class="form-control" id="email" placeholder="이메일" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">전화번호</label>
+        <input type="text" class="form-control" id="phone" placeholder="전화번호" name="phone">
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">주소</label>
+        <input type="text" class="form-control" id="address" placeholder="주소" name="address">
+      </div>
+      <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
