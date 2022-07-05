@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from evuser.views import home
+from evuser.views import home, svchome, evuser_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('evuser/', include('evuser.urls')),
     path('board/', include('board.urls')),
+    path('cardinfo/', include('cardinfo.urls')),
+    path('charginginfo/', include('charginginfo.urls')),
+    path('evcharger/', include('evcharger.urls')),
+    path('svchome/', svchome),
+    # path('evuser/list', evuser_list),
     path('', home)
 ]

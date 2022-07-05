@@ -1,0 +1,81 @@
+{% extends "svcbase.html" %}
+
+{% block contents %}
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-6 fw-bold">충전기정보</div>
+    <form class="col-md-6 ms-auto">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-primary" type="button" id="button-addon2">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="d-grid justify-content-md-end">
+      <button class="btn btn-primary" onclick="location.href='/charginginfo/write/'">충전기추가</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-light">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>충전기이름</th>
+            <th>충전기번호</th>
+            <th>충전상태</th>
+            <th>주소</th>
+            <th>펌웨어버전</th>
+            <th>카드등록일시</th>
+          </tr>
+        </thead>
+        <tbody class="text-dark">
+          {% for evcharger in evchargers %}
+          <tr onclick="location.href='/evcharger/detail/{{ evcharger.id }}'">
+            <th>{{ evcharger.id }}</th>
+            <th>{{ evcharger.cpname }}</th>
+            <td>{{ evcharger.cpnumber }}</td>
+            <td>{{ evcharger.cpstatus }}</td>
+            <td>{{ evcharger.address }}</td>
+            <td>{{ evcharger.cpversion }}</td>
+            <td>{{ evcharger.register_dttm }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12">
+      <nav>
+        <ul class="pagination justify-content-center">
+          {% if evchargers.has_previous %}
+          <li class="page-item">
+            <a href="?p={{ evchargers.previous_page_number }}" class="page-link">이전으로</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a href="#" class="page-link">이전으로</a>          
+          </li>
+          {% endif %}
+          <li class="page-item active">
+            <a href="#" class="page-link">{{ evchargers.number }} / {{ evchargers.paginator.num_pages }}</a>
+          </li>
+          {% if evchargers.has_next %}
+          <li class="page-item">
+            <a href="?p={{ evchargers.next_page_number }}" class="page-link">다음으로</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a href="#" class="page-link">다음으로</a>          
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock %}

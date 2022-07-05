@@ -1,0 +1,27 @@
+{% extends "svcbase.html" %} 
+
+{% block head %}
+<link rel="stylesheet" href="../../../static/style.css" />
+{% endblock %}
+
+{% block contents %} 
+사용자 정보
+<div class="container-fluid mt-3">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="form-group mb-3">
+        <label for="username" class="">사용자명</label>
+        <input type="text" class="form-control" id="username" value="{{ evuser.username }}" readonly/>
+        <label for="name" class="">이름</label>
+        <textarea class="form-control" readonly>{{ evuser.name }}</textarea>
+      </div>
+      <!-- <button class="btn btn-primary" onclick="location.href='/svchome/'">돌아가기</button> -->
+      <button class="btn btn-primary" onclick="javascript:history.go(-1);">돌아가기</button>
+    </div>
+  </div>
+</div>
+{% endblock %} 
+
+{% block script %}
+<script src="../../../static/script.js"></script>
+{% endblock %}

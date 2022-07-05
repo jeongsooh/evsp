@@ -5,7 +5,10 @@ from . import views
 # 따라서 함수를 정의한 views.py를 import 해야 하고, views에서 정의한 함수를 경로와 맺어준다.
 
 urlpatterns = [
-    path('register/', views.register),
+    path('detail/<int:pk>/', views.evuser_detail),
+    path('list/', views.evuser_list),
+    # path('write/', views.evuser_write),
+    path('evuser_register/', views.evuser_register),
     path('login/', views.login),
     path('logout/', views.logout),
 ]

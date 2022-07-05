@@ -995,13 +995,16 @@ application = get_wsgi_application()
 - 다음은 Static files: 항목에서 화일들을 연결해 준다. URL 밑에 '/static/'을 등록하고 경로는 '/home/jeongsooh/evsp_comm/static/'을 등록해 준다.
 - 그 다음 제일 위 쪽에 위치한 Reload 버튼을 선택해서 다시 시작한다. 
 
-
-
-
-
-
-
-
-
-
-
+21. user branch에서 UI/UX 변경을 위하여 20번에서 배포용으로 변경한 내용들을 다시 개발 상태로 변경한다.
+- settings.py에서 수정된 부분들을 다음과 같이 재 변경한다.
+````````````````````````
+DEBUG = True
+ALLOWED_HOSTS = ['*']
+````````````````````````
+- static 화일들을 정리해서 한곳에 모아둘 것이므로 아래와 같이 새로운 static 화일 경로를 지정해 준다.
+````````````````````````
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+````````````````````````
